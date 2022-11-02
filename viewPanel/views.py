@@ -56,11 +56,11 @@ def LogOut(request):
 
 
 def homePage(request):
-    guide = guideline.objects.raw("select * from userpanel_guideline order by date_time limit 0,3 ")
-    featr = feature.objects.raw("select * from userpanel_feature limit 0,3 ")
-    subject = subjects.objects.raw("select * from userpanel_subjects limit 0,8 ")
+    guide = guideline.objects.raw("select * from userpanel_guideline order by date_time ")
+    featr = feature.objects.raw("select * from userpanel_feature")
+    subject = subjects.objects.raw("select * from userpanel_subjects")
     commu = community.objects.raw("select * from userpanel_community")
-    fnd = found.objects.raw("select * from userpanel_found limit 1 ")
+    fnd = found.objects.raw("select * from userpanel_found")
 
 
     context = {
@@ -74,11 +74,11 @@ def homePage(request):
 
 
 def aboutPage(request):
-    guide = guideline.objects.raw("select * from userpanel_guideline order by date_time limit 0,3 ")
-    featr = feature.objects.raw("select * from userpanel_feature limit 0,3 ")
-    subject = subjects.objects.raw("select * from userpanel_subjects limit 0,8 ")
+    guide = guideline.objects.raw("select * from userpanel_guideline order by date_time")
+    featr = feature.objects.raw("select * from userpanel_feature")
+    subject = subjects.objects.raw("select * from userpanel_subjects ")
     commu = community.objects.raw("select * from userpanel_community")
-    fnd = found.objects.raw("select * from userpanel_found limit 1 ")
+    fnd = found.objects.raw("select * from userpanel_found")
     context = {
         'guidelines': guide,
         'features': featr,
@@ -110,7 +110,7 @@ def contactPage(request):
     return render(request,'view_file/contact.html')
 
 def coursePage(request):
-    guide = guideline.objects.raw("select * from userpanel_guideline order by date_time limit 0,3 ")
+    guide = guideline.objects.raw("select * from userpanel_guideline order by date_time")
     featr = feature.objects.raw("select * from userpanel_feature")
     subject = subjects.objects.raw("select * from userpanel_subjects")
 
@@ -123,8 +123,8 @@ def coursePage(request):
 
 def course_detailsPage(request,id):
     featr = feature.objects.raw("select * from userpanel_feature where id = %s",[id])
-    course = feature.objects.raw("select * from userpanel_feature order by date_time desc limit 0,5")
-    blog = blogs.objects.raw("select * from userpanel_blogs limit 0,9")
+    course = feature.objects.raw("select * from userpanel_feature order by date_time desc")
+    blog = blogs.objects.raw("select * from userpanel_blogs")
     context={
         'feature' : featr,
         'recent_course':course,

@@ -80,10 +80,10 @@ WSGI_APPLICATION = 'Courses.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'd822odrm6r209d',
-        'USER': 'vubgllbtapzxso',
-        'PASSWORD': 'ae91538ae283f45b3dc6cc3482c42896de7410028e550abe978415598cc5ac5a',
-        'HOST': 'ec2-44-209-57-4.compute-1.amazonaws.com',
+        'NAME': 'd1j736tvpcmpci',
+        'USER': 'wpapselbatniym',
+        'PASSWORD': 'a98327cef8c964e66898eca372ef20b406931377bd6514b45c94dec8059c1d6f',
+        'HOST': 'ec2-44-195-132-31.compute-1.amazonaws.com',
         'PORT': '5432',
     }
 }

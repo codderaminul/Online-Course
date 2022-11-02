@@ -1,0 +1,54 @@
+.login_page{
+    margin-top:100px;
+
+}
+
+.log_left img{
+    height:250px;
+    width:450px;
+    background:black;
+}
+.log_left a{
+    font-size:20px;
+}
+
+.img{
+    height:200px;
+    width:200px;
+    background:black;
+    margin-top:230px;
+}
+
+.dashboard_icon{
+     font-size:45px;
+     padding:30px;
+}
+.mt_100{
+    margin-top:200px;
+}
+.user_icon img{
+    height: 42px;
+    width:  42px;
+    border-radius:50%;
+}
+
+.pro_img img{
+    height:250px;
+    width:250px;
+    border-radius:25%;
+}
+
+@media (min-width: 490px) and (max-width: 780px){
+    .log_left img{
+        margin-top:50px;
+        height:150px;
+        width:240px;
+    }
+}
+@media (min-width: 781px) and (max-width: 1028px){
+    .log_left img{
+        height:250px;
+        width:350px;
+
+    }
+}

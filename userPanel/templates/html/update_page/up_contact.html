@@ -1,0 +1,29 @@
+{% extends 'html/set_page/base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% block title%} Update4 Contact {% endblock %}
+
+{% block content %}
+<div class="main-container">
+    <div class="container">
+        <h4 class="text-secondary mt-2 mb-3">Update Contact Page</h4>
+        {% if messages %}
+            {% for message in messages %}
+                <h4 class="text-success ml-4 mb-2">{{ message }}</h4>
+            {% endfor %}
+        {% endif %}
+        <form action="/userPanel/update_contact/{{id}}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {% for field in form.visible_fields %}
+                <div class="fieldWrapper form-group {{ field.label }}">
+                    {{ field.errors}}
+                      <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                    {{ field | add_class:"form-control" }}
+                </div>
+            {% endfor %}
+            <input class="btn btn-dark w-100 mt-3 mb-5" type="submit" value="Submit">
+        </form>
+    </div>
+</div>
+
+{% endblock %}

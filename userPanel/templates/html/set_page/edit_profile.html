@@ -1,0 +1,41 @@
+{% extends 'html/set_page/base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% block title %} Set Slider {% endblock %}
+{% block userName %}{{ request.user }}{% endblock %}
+{% block content %}
+<div class="main-container">
+    <div class="container">
+        <h4 class="text-success mt-3 mb-5">Edit Profile</h4>
+        <div class="mt-5 p-3  w-75">
+            <form action="/userPanel/creator_profile_edit/" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <label for="first_name">First Name</label>
+                <input type="text" value="{{ user_data.first_name }}" name="first_name" class="form-control" id="first_name"/>
+
+                <label class="mt-5" for="last_name">Last Name</label>
+                <input type="text" value="{{ user_data.last_name }}" name="last_name" class="form-control" id="last_name"/>
+
+                <label class="mt-5" for="user_name">User Name</label>
+                <input type="text" value="{{ user_data.username }}" name="username" class="form-control" id="user_name"/>
+
+                <label class="mt-5" for="email">Email</label>
+                <input type="text" value="{{ user_data.email }}" name="email" class="form-control" id="email"/>
+
+                <label class="mt-5" for="user_phone">Phone</label>
+                <input type="text" value="{{ user_data.user_phone }}" name="user_phone" class="form-control" id="user_phone"/>
+
+                <label class="mt-5" for="user_location">Location</label>
+                <input type="text" value="{{ user_data.user_location }}" name="user_location" class="form-control" id="user_location"/>
+
+
+                <label class="mt-5" for="profile">Profile</label>
+                <input type="file" value="{{ creator_data.user_image }}" name="user_image" class="form-control" id="profile"/>
+                <img src="{{ creator_data.user_image }}" height="100" width="100" class="mb-5"/>
+
+                <button class="btn btn-primary  w-100">Update</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends 'html/set_page/base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% block title%} Set Slider {% endblock %}
+{% block userName %}{{ request.user }}{% endblock %}
+{% block content %}
+<div class="main-container">
+    <div class="container">
+            <h4 class="text-secondary mt-2 mb-3">Change Password</h4>
+            <form action="/userPanel/changePass/" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                {% for field in form.visible_fields %}
+                    <div class="fieldWrapper form-group {{ field.label }}">
+                        {{ field.errors}}
+                          <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                        {{ field | add_class:"form-control" }}
+                      </div>
+                 {% endfor %}
+              <input class="btn btn-dark w-100 mt-3 mb-5" type="submit" value="Change Password">
+            </form>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

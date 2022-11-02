@@ -1,0 +1,32 @@
+{% extends 'html/set_page/base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% block title %} Set Slider {% endblock %}
+{% block userName %}{{ request.user }}{% endblock %}
+{% block content %}
+    <div class="main-container">
+        <div class="container">
+            <h4 class="text-success mt-3 mb-5">My Profile</h4>
+            {% if messages%}
+                {% for msg in messages %}
+                    <h5 class="text-danger">{{ msg }} </h5>
+                {% endfor %}
+            {% endif %}
+            <div class="row mt-5 bg-info p-3">
+                <div class="pro_img col-5">
+                    <img src="{{ request.user.user_image }}" style="height:250px;width:250px;border-radius:25%;"/>
+                </div>
+                <div class="col-7">
+                    <h5 class="text-light mb-4 mt-2">Md Akbor Hossain</h5>
+                    <h5 class="text-light mb-4">Total Product ..</h5>
+                    <h5 class="text-light mb-4">Total Sell ..</h5>
+                    <h5 class="text-light mb-3">Total Flower ..</h5>
+                    <a href="/userPanel/creator_profile_edit/" class="btn btn-primary">Edit Profile</a>
+                </div>
+            </div>
+            <div class="mt-5">
+                <a href="/userPanel/changePass/" class="text-primary h3">Edit Password</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

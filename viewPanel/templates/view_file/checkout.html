@@ -1,0 +1,83 @@
+{% extends 'view_file/base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% block title%} Blog Details {% endblock %}
+
+{% block slider_area %}
+<section class="slider-area slider-area">
+        <div class="slider-active">
+            <!-- Single Slider -->
+            <div class="single-slider slider-height2">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-8 col-lg-11 col-md-12">
+                            <div class="hero__caption hero__caption2">
+                                <h1 data-animation="bounceIn" data-delay="0.2s">Contact us</h1>
+                                <!-- breadcrumb Start-->
+                                <nav aria-label="breadcrumb">
+                                    <ol class="breadcrumb">
+                                        <li class="breadcrumb-item"><a href="{{ '/viewPanel/home/' }}">Home</a></li>
+                                        <li class="breadcrumb-item"><a href="{{ '/viewPanel/checkout/' }}">Checkout</a></li>
+                                    </ol>
+                                </nav>
+                                <!-- breadcrumb End -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+{% block content %}
+    <div class="checkout">
+        <div class="container">
+            <form action="" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="col-lg-6 bilng_adrs bordered">
+                        <h3 class="text-info mt-5 check_headr">Billing Address</h3>
+                        {% if messages %}
+                            {% for message in messages %}
+                                <h3 class="text-danger">{{ message }}</h3>
+                            {% endfor %}
+                        {% endif %}
+                        <div class="row form-group">
+                            <input type="text" placeholder="Enter Name" name="name" class=" checkout_input" required/>
+                            <input type="text" placeholder="Enter Phone Number" name="phone" class=" checkout_input" required/>
+                            <input type="text" placeholder="Enter email" name="email" class=" checkout_input" required/>
+                            <select class="checkout_type form-control mt-3">
+                                <option>Delivary Type</option>
+                                <option>Cash On delivary</option>
+                                <option>Counter</option>
+                                <option>Collect form from Shop</option>
+                            </select>
+                            <input type="text" placeholder="Enter Billing Address" name="bill_adrs" class=" checkout_input_detls" required/>
+                            <input type="text" placeholder="Other Notes" name="othr_note" class=" checkout_input_detls mb-5" required/>
+                        </div>
+                    </div>
+                    <div class="col-lg-5 bordered">
+                        <table class="table">
+                            <tr class="row">
+                                <th class="col">Image</th>
+                                <th class="col">Name</th>
+                                <th class="col">Quantity</th>
+                                <th class="col">Subtotal</th>
+                            </tr>
+                            {% for report in delivary %}
+                            <tr class="row">
+                                <td class="col-2"><img src="{{ report.feat_cover}}" alt="" style="height:50px;width:50px;"/></td>
+                                <td class="col-5">{{ report.feat_title|slice:20}}</td>
+                                <td class="col-2">1</td>
+                                <td class="col-3">{{ report.feat_fee }} Taka</td>
+                            </tr>
+                            {% endfor %}
+
+                        </table>
+                        <input type="submit" class="p-3 mt-5 w-100" value="Checkout"/>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

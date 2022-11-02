@@ -1,0 +1,153 @@
+{% extends 'view_file/base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% block title%} Course {% endblock %}
+{% block slider_area %}
+<section class="slider-area slider-area">
+    <div class="slider-active">
+        <!-- Single Slider -->
+        <div class="single-slider slider-height2">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-8 col-lg-11 col-md-12">
+                        <div class="hero__caption hero__caption2">
+                            <h1 data-animation="bounceIn" data-delay="0.2s">Contact us</h1>
+                            <!-- breadcrumb Start-->
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="{{ '/viewPanel/home/' }}">Home</a></li>
+                                    <li class="breadcrumb-item"><a href="{{ '/viewPanel/course/' }}">Course</a></li>
+                                </ol>
+                            </nav>
+                            <!-- breadcrumb End -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+{% block content %}
+
+        <!-- Courses area start -->
+        <div class="courses-area section-padding40 fix">
+            <div class="container">
+                <div class="row">
+                    <div class="col-4 ">
+                        <select class="bg-light text-primary">
+                            <option>All Subject</option>
+                            {% for sub in subjects %}
+                                <option>{{ sub.sub_name}}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="col-8 justify-content-center">
+                        <div class="col-xl-7 col-lg-8">
+                            <div class="section-tittle text-center mb-55">
+                                <h2>Our featured courses</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    {% for feature in features %}
+                    <div class="col-lg-4">
+                        <div class="properties properties2 mb-30">
+                            <div class="properties__card">
+                                <div class="properties__img overlay1">
+                                    <a href="/viewPanel/details_course/{{ feature.id}}"><img src="{{ feature.feat_cover }}" alt=""></a>
+                                </div>
+                                <div class="properties__caption">
+                                    <p>{{ feature.feat_name }}</p>
+                                    <h3><a href="/viewPanel/details_course/{{ feature.id}}">{{ feature.feat_title }}</a></h3>
+                                    <p>{{ feature.feat_pragraph|slice:200 }}</p>
+                                    <div class="properties__footer d-flex justify-content-between align-items-center">
+                                        <div class="restaurant-name">
+                                            <div class="rating">
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star-half"></i>
+                                            </div>
+                                            <p><span>(4.5)</span> based on 120</p>
+                                        </div>
+                                        <div class="price">
+                                            <span>$135</span>
+                                        </div>
+                                    </div>
+                                    <a href="/viewPanel/details_course/{{ feature.id}}" class="border-btn border-btn2">Find out more</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-xl-7 col-lg-8">
+                        <div class="section-tittle text-center mt-40">
+                            <a href="#" class="border-btn">Load More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Courses area End -->
+        <!--? top subjects Area Start -->
+        <div class="topic-area">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-xl-7 col-lg-8">
+                        <div class="section-tittle text-center mb-55">
+                            <h2>All subjects</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    {% for sub in subjects %}
+                        <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="single-topic text-center mb-30">
+                                <div class="topic-img">
+                                    <img src="{{ sub.sub_image}}" alt="">
+                                    <div class="topic-content-box">
+                                        <div class="topic-content">
+                                            <h3><a href="#">{{ sub.sub_name}}</a></h3>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-xl-12">
+                        <div class="section-tittle text-center mt-20">
+                            <a href="courses.html" class="border-btn">View More Subjects</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- top subjects End -->
+        <!-- ? services-area -->
+        <div class="services-area services-area2 section-padding40">
+            <div class="container">
+                <div class="row justify-content-sm-center">
+                    {% for guide in guidelines %}
+                    <div class="col-lg-4 col-md-6 col-sm-8">
+                        <div class="single-services mb-30">
+                            <div class="features-icon">
+                                <img src="{{ guide.guid_file }}" alt="">
+                            </div>
+                            <div class="features-caption">
+                                <h3>{{ guide.guid_title }}</h3>
+                                <p>{{ guide.guid_pragraph|slice:50 }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+{% endblock %}tml>

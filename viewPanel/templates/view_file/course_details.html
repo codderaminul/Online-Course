@@ -1,0 +1,115 @@
+{% extends 'view_file/base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% block title%} Blog Details {% endblock %}
+
+{% block slider_area %}
+<section class="slider-area slider-area">
+        <div class="slider-active">
+            <!-- Single Slider -->
+            <div class="single-slider slider-height2">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-8 col-lg-11 col-md-12">
+                            <div class="hero__caption hero__caption2">
+                                <h1 data-animation="bounceIn" data-delay="0.2s">Contact us</h1>
+                                <!-- breadcrumb Start-->
+                                <nav aria-label="breadcrumb">
+                                    <ol class="breadcrumb">
+                                        <li class="breadcrumb-item"><a href="{{ '/viewPanel/home/' }}">Home</a></li>
+                                        <li class="breadcrumb-item"><a href="{{ '/viewPanel/blog_details/' }}">Blog Details</a></li>
+                                    </ol>
+                                </nav>
+                                <!-- breadcrumb End -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+{% block content %}
+<section class="blog_area single-post-area section-padding">
+   <div class="container">
+      <div class="row">
+         <div class="col-lg-8 posts-list">
+            <div class="single-post">
+               {% for feat in feature %}
+                  <div class="feature-img">
+                     <img class="img-fluid" src="{{ feat.feat_cover }}" alt="" style="width:600px;">
+                  </div>
+                  <div class="blog_details">
+                     <h2 style="color: #2d2d2d;">{{ feat.feat_title }}</h2>
+                     <ul class="blog-info-link mt-3 mb-4">
+                        <li><i class="fa fa-user"></i>Sell by {{ feat.seller_name }}</li>
+                        <li><a href="#"><i class="fa fa-comments"></i>Chat</a></li>
+                     </ul>
+                     <p>{{ feat.feat_pragraph|slice:400 }}</p>
+                      <h2>Price: {{ feat.feat_fee }}</h2>
+                      <h3>Duration: {{ feat.feat_duration }}</h3>
+                  </div>
+                  <div class="mt-5 button">
+                      {% if request.user.is_user %}
+                      <a href="" class="mr-5">Add to Cart</a>
+                      <a href="/viewPanel/checkout/{{feat.id}}" class="mr-5">CheckOut</a>
+                      {% else %}
+                      <h2 class="text-danger">Please Login first for buy this course</h2>
+                      {% endif %}
+                  </div>
+                {% endfor %}
+            </div>
+
+         </div>
+   <div class="col-lg-4">
+      <div class="blog_right_sidebar">
+         <aside class="single_sidebar_widget search_widget">
+            <form action="#">
+               <div class="form-group">
+                  <div class="input-group mb-3">
+                     <input type="text" class="form-control" placeholder='Search Keyword'
+                     onfocus="this.placeholder = ''" onblur="this.placeholder = 'Search Keyword'">
+                     <div class="input-group-append">
+                        <button class="btns" type="button"><i class="ti-search"></i></button>
+                     </div>
+                  </div>
+               </div>
+               <button class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn"
+               type="submit">Search</button>
+            </form>
+         </aside>
+         <aside class="single_sidebar_widget popular_post_widget">
+            <h3 class="widget_title" style="color: #2d2d2d;">Recent Course</h3>
+            {% for course in recent_course %}
+            <div class="media post_item">
+               <a href="/viewPanel/details_course/{{ course.id}}">
+                   <img src="{{ course.feat_cover }}" alt="post" style="width:70px;height:65px;">
+               </a>
+               <div class="media-body">
+                  <a href="/viewPanel/details_course/{{ course.id}}">
+                     <h3 style="color: #2d2d2d;">{{ course.feat_title|slice:20 }} . . .</h3>
+                  </a>
+                  <p>{{ course.date_time }}</p>
+               </div>
+            </div>
+            {% endfor %}
+         </aside>
+         <aside class="single_sidebar_widget instagram_feeds">
+            <h4 class="widget_title" style="color: #2d2d2d;">Recent Post</h4>
+            <ul class="instagram_row flex-wrap">
+               {% for blog in recent_blog %}
+               <li>
+                  <a href="/blog_details/{{blog.id}}">
+                     <img class="img-fluid" src="{{ blog.blog_image}}" alt="" style="width:100px;height:80px;">
+                  </a>
+               </li>
+               {% endfor %}
+            </ul>
+         </aside>
+      </div>
+   </div>
+</div>
+</div>
+</section>
+<!-- Blog Area End -->
+{% endblock %}

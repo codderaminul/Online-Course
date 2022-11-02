@@ -1,0 +1,85 @@
+{% extends 'view_file/base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% block title%} Course {% endblock %}
+
+
+{% block slider_area %}
+<section class="slider-area slider-area">
+        <div class="slider-active">
+            <!-- Single Slider -->
+            <div class="single-slider slider-height2">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-8 col-lg-11 col-md-12">
+                            <div class="hero__caption hero__caption2">
+                                <h1 data-animation="bounceIn" data-delay="0.2s">My Profile</h1>
+                                <!-- breadcrumb Start-->
+                                <nav aria-label="breadcrumb">
+                                    <ol class="breadcrumb">
+                                        <li class="breadcrumb-item"><a href="/viewPanel/home/">Home</a></li>
+                                        <li class="breadcrumb-item"><a href="/viewPanel/profile/">Profile</a></li>
+                                    </ol>
+                                </nav>
+                                <!-- breadcrumb End -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+{% block content %}
+<div class="">
+    <div class="container">
+        {% if messages %}
+            {% for message in messages %}
+                <h3 class="text-success mt-5">{{ message }}</h3>
+            {% endfor %}
+        {% endif %}
+        <div class="mt-5 mb-5">
+            <a href="/viewPanel/profile/" class="btn active">My Course</a>
+            <a href="/viewPanel/course/" class="btn ">Add Course</a>
+            <a href="/viewPanel/chat/{{ request.user.id}}" class="btn ">Chat</a>
+        </div>
+        <div class="row justify-content-left mt-5">
+            <div class="col-xl-7 col-lg-8">
+                <div class="section-tittle text-left mb-55">
+                    <h3>My All Course</h3>
+                </div>
+            </div>
+        </div>
+        <div class="">
+            <table class="table table-hover">
+                <thead>
+                    <tr class="row">
+                        <th class="col-1">Serial</th>
+                        <th class="col-3">Course File</th>
+                        <th class="col-3">Seller Name</th>
+                        <th class="col-2">Course Name</th>
+                        <th class="col-1">View</th>
+                        <th class="col-1">Download</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for courses in my_course %}
+                        <tr class="row">
+                            <td class="col-1">{{ forloop.counter }}</td>
+                            {% for course in courses %}
+                                <td class="col-3"><img src="{{ course.feat_cover}}" width="200" height="100" alt=""></td>
+                                <td class="col-2"><p>{{ course.seller_name }}</p></td>
+                                <td class="col-3"><p>{{ course.feat_title }}</p></td>
+                                <td class="col-1 "><a class="text-info" href="{{ course.feat_image}}" target="_blank">Open</a></td>
+                                <td class="col-1 "><a class="text-info" href="{{course.feat_image.url}}" download>Download</a></td>
+                            {% endfor %}
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

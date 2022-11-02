@@ -1,0 +1,85 @@
+.login_page{
+    margin-top:100px;
+
+}
+.log_left img{
+    height:250px;
+    width:450px;
+    background:black;
+    margin-top:50px;
+}
+.log_left a{
+    font-size:20px;
+}
+.img{
+    height:200px;
+    width:200px;
+    background:black;
+    margin-top:230px;
+}
+.button{
+    margin-top:50px;
+}
+.button a{
+    padding:15px;
+    background:green;
+    border-radius:5px;
+    color:black;
+    font-size:20px;
+}
+.button a:hover{
+    color:yellow!important;
+    overflow:hidden!important;
+}
+.check_sub_row{
+}
+.checkout_input {
+    width:260px;
+    border:none;
+    border-bottom:2px solid gray;
+    height:50px;
+    margin-right:5px;
+    margin-left:15px;
+}
+.checkout_input_detls{
+    width:540px;
+    border:none;
+    border-bottom:2px solid gray;
+    height:50px;
+    margin-right:5px;
+    margin-left:15px;
+    float:left;
+    display:block;
+}
+.checkout_type{
+    width:260px;
+    margin-left:15px;
+}
+.bordered{
+    border:1px dotted green;
+    margin:20px;
+}
+
+.chat_left_side{
+
+}
+.search{}
+.buyer_list{}
+.chat_right_side{}
+.user_profile{}
+.chat_list{}
+@media (min-width: 490px) and (max-width: 780px){
+    .log_left img{
+        margin-top:50px;
+        height:150px;
+        width:240px;
+        background:black;
+    }
+}
+@media (min-width: 781px) and (max-width: 1028px){
+    .log_left img{
+        height:250px;
+        width:350px;
+        background:black;
+    }
+}

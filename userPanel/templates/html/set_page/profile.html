@@ -1,0 +1,36 @@
+{% extends 'html/set_page/base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% block title %} Set Slider {% endblock %}
+{% block userName %}
+{{ request.user }}
+{% endblock %}
+{% block content %}
+    <div class="main-container">
+        <div class="container">
+            <h4 class="text-success mt-3 mb-5">My Profile</h4>
+            <div class="row mt-5 bg-secondary p-3">
+                <div class="pro_img col-5">
+                    <img src="{{ user.user_image }}" style="height:250px;width:250px;border-radius:25%;"/>
+                </div>
+                <div class="col-6">
+                    <h5 class="text-light mb-4 mt-2">{{ user.username }}</h5>
+                    <h5 class="text-light mb-4">Total Product ..</h5>
+                    <h5 class="text-light mb-4">Total Sell ..</h5>
+                    <h5 class="text-light mb-3">Total Flower ..</h5>
+                    <a href="/userPanel/creator_profile_edit/" class="btn btn-primary">Edit Profile</a>
+                </div>
+            </div>
+
+            <div class="mt-5">
+                <h5 class=" mb-4">First Name: {{ user.first_name }}</h5>
+                <h5 class=" mb-4">Last Name: {{ user.last_name }}</h5>
+                <h5 class=" mb-4">Username: {{ user.username }}</h5>
+                <h5 class=" mb-4">Email: {{ user.email }}</h5>
+                <h5 class=" mb-4">Phone: {{ user.user_phone }}</h5>
+                <h5 class=" mb-4">Location: {{ user.user_location }}</h5>
+                <h5 class=" pb-5">User type ..</h5>
+            </div>
+        </div>
+    </div>
+{% endblock %}

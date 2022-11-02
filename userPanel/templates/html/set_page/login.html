@@ -1,0 +1,55 @@
+<!doctype html>
+<html class="no-js" lang="zxx">
+    {% load static %}
+    <head>
+        <meta charset="utf-8">
+        <title>{% block title %}LogIn Page{% endblock %}</title>
+        {% load static %}
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="manifest" href="site.webmanifest">
+        <link rel="shortcut icon" type="image/png" href="{% static 'viewPanel/assets/img/favicon.png' %}">
+
+        <!-- CSS here -->
+        <link rel="stylesheet" href="{% static 'viewPanel/assets/css/bootstrap.min.css' %}">
+        <link rel="stylesheet" href="{% static 'viewPanel/assets/css/fontawesome-all.min.css' %}">
+
+        <link rel="stylesheet" href="{% static 'userPanel/css/my_style.css' %}">
+
+        <link rel="stylesheet" href="{% static 'viewPanel/css/my_style.css' %}">
+
+
+    </head>
+    <body>
+        <div class="login_page align-items-center">
+            <div class="container">
+                <div class="row">
+                    <div class="col-6 log_left">
+                        <h3 class="text-success">Online Course </h3>
+                        <img class="d-block mb-4" src="{% static 'userPanel/files/PNG/login_img.png' %}"/>
+                        <a class="" href="/userPanel/signup/">Sign Up</a>
+                    </div>
+                    <div class="col-6">
+                        <h3 class="text-success">LogIn To Your Account</h3>
+                        {% if messages%}
+                            {% for msg in messages %}
+                                <h5 class="text-danger">{{ msg }} </h5>
+                            {% endfor %}
+                        {% endif %}
+                        <div class="form-group">
+                            <form action="/userPanel/login/" method="post"  enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <label  for="user_name">User Name</label>
+                                <input class="form-control mb-4" type="text" name="username" placeholder="Enter User Name" id="user_name"/>
+                                <label for="user_pass">Password</label>
+                                <input class="form-control" type="password" name="password1" placeholder="Enter User Name" id="user_pass"/>
+                                <button class="btn btn-primary mt-3 w-100">Submit</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

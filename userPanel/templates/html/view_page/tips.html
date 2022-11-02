@@ -1,0 +1,59 @@
+{% extends 'html/set_page/base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% block title%} View Tips {% endblock %}
+
+{% block content %}
+<div class="main-container">
+    <div class="container">
+        <div class="card-box mb-30">
+				<h2 class="h4 pd-20">All Tips<a href="{{ '/userPanel/set_tips/' }}" class="float-right btn btn-primary">New Add</a></h2>
+				{% if messages %}
+					{% for message in messages %}
+						<h4 class="text-success ml-4 mb-2">{{ message }}</h4>
+					{% endfor %}
+				{% endif %}
+				<table class="table nowrap">
+					<thead>
+						<tr>
+							<th>File</th>
+							<th>Title</th>
+							<th>Line</th>
+							<th>Pragraph</th>
+							<th class="datatable-nosort">Action</th>
+						</tr>
+					</thead>
+					<tbody>
+                    {% for row in record %}
+						<tr>
+                            <td class="table-plus">
+								<img src="{{ row.tps_file}}" width="70" height="70" alt="">
+							</td>
+                            <td>
+                                <h5 class="font-16">{{ row.tps_title }}</h5>
+                            </td>
+                            <td>
+                                <h5 class="font-16">{{ row.tps_line }}</h5>
+                            </td>
+                            <td>
+                                <p>{{ row.tps_pragraph|slice:":50" }}</p>
+                            </td>
+							<td>
+								<div class="dropdown">
+									<a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
+										<i class="dw dw-more"></i>
+									</a>
+									<div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
+										<a class="dropdown-item" href="/userPanel/update_tips/{{ row.id }}"><i class="dw dw-edit2"></i> Edit</a>
+										<a class="dropdown-item" href="/userPanel/del_tips/{{ row.id }}"><i class="dw dw-delete-3"></i> Delete</a>
+									</div>
+								</div>
+							</td>
+						</tr>
+                    {% endfor %}
+					</tbody>
+				</table>
+			</div>
+    </div>
+</div>
+{% endblock %}

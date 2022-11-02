@@ -55,7 +55,7 @@ ROOT_URLCONF = 'Courses.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR,'userPanel')],
+        'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -80,10 +80,10 @@ WSGI_APPLICATION = 'Courses.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'd4fqsif0ntq2fq',
-        'USER': 'lzyprzwisutoit',
-        'PASSWORD': '4dc96a9d292abff49d53916fee977e38006d9debf2d2d5cd25cc138fe4481e1f',
-        'HOST': 'ec2-23-20-140-229.compute-1.amazonaws.com',
+        'NAME': 'd822odrm6r209d',
+        'USER': 'vubgllbtapzxso',
+        'PASSWORD': 'ae91538ae283f45b3dc6cc3482c42896de7410028e550abe978415598cc5ac5a',
+        'HOST': 'ec2-44-209-57-4.compute-1.amazonaws.com',
         'PORT': '5432',
     }
 }

@@ -122,9 +122,9 @@ def coursePage(request):
     return render(request,'view_file/course.html',context)
 
 def course_detailsPage(request,id):
-    featr = feature.objects.raw("select * from userpanel_feature where id = %s",[id])
-    course = feature.objects.raw("select * from userpanel_feature order by date_time desc")
-    blog = blogs.objects.raw("select * from userpanel_blogs")
+    featr = feature.objects.get(id=id)
+    course = feature.objects.all()
+    blog = blogs.objects.all()
     context={
         'feature' : featr,
         'recent_course':course,
@@ -142,22 +142,22 @@ def checkoutPage(request,id):
            return redirect('profile')
        messages.success(request,"Course Already Added")
 
-    featr = feature.objects.raw("select * from userpanel_feature where id = %s", [id])
+    featr = feature.objects.get(id=id)
     context = {
         "delivary":featr,
     }
     return render(request, 'view_file/checkout.html',context)
 
 def profilePage(request):
-    my_course = ByCourse.objects.raw("select * from viewPanel_bycourse where customer_id = %s",[request.user.id])
+    my_course = ByCourse.objects.get(customer_id = request.user.id)
     list = []
     therury_list = []
     subject_list = []
     for course in my_course:
         list.append(course.course_id)
     for course in list:
-        therury = feature.objects.raw("select * from userpanel_feature where id= %s",[course])
-        subject = subjects.objects.raw("select * from userpanel_subjects")
+        therury = feature.objects.get(id=course)
+        subject = subjects.objects.all()
         therury_list.append(therury)
     return render(request,'view_file/profile.html',{"my_course":therury_list})
 

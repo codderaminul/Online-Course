@@ -171,7 +171,7 @@ def Dashboard(request):
 
 @login_required(login_url='creator_login')
 def setSlider(request):
-    try:
+
         if request.method == 'POST':
             data = sliderForm(request.POST, request.FILES)
             if data.is_valid():
@@ -183,11 +183,9 @@ def setSlider(request):
                     catch.save()
                     messages.success(request,'Save Successfully')
                     return redirect("view_slider")
-    except:
-            messages.error(request, "Invalid Input")
-            return redirect("set_slider")
-    form = sliderForm()
-    return render(request, 'html/set_page/set_slider.html',{'form':form})
+
+        form = sliderForm()
+        return render(request, 'html/set_page/set_slider.html',{'form':form})
 @login_required(login_url='creator_login')
 def viewSlider(request):
     all = slider.objects.all()

@@ -56,11 +56,11 @@ def LogOut(request):
 
 
 def homePage(request):
-    guide = guideline.objects.raw("select * from userpanel_guideline order by date_time ")
-    featr = feature.objects.raw("select * from userpanel_feature")
-    subject = subjects.objects.raw("select * from userpanel_subjects")
-    commu = community.objects.raw("select * from userpanel_community")
-    fnd = found.objects.raw("select * from userpanel_found")
+    guide = guideline.objects.all()
+    featr = feature.objects.all()
+    subject = subjects.objects.all()
+    commu = community.objects.all()
+    fnd = found.objects.all()
 
 
     context = {
@@ -76,7 +76,7 @@ def homePage(request):
 def aboutPage(request):
     guide = guideline.objects.raw("select * from userpanel_guideline order by date_time")
     featr = feature.objects.raw("select * from userpanel_feature")
-    subject = subjects.objects.raw("select * from userpanel_subjects ")
+    subject = subjects.objects.raw("select * from userpanel_subjects")
     commu = community.objects.raw("select * from userpanel_community")
     fnd = found.objects.raw("select * from userpanel_found")
     context = {

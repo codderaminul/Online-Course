@@ -35,29 +35,27 @@
       <div class="row">
          <div class="col-lg-8 posts-list">
             <div class="single-post">
-               {% for feat in feature %}
                   <div class="feature-img">
-                     <img class="img-fluid" src="{{ feat.feat_cover }}" alt="" style="width:600px;">
+                     <img class="img-fluid" src="{{ feature.feat_cover }}" alt="" style="width:600px;">
                   </div>
                   <div class="blog_details">
-                     <h2 style="color: #2d2d2d;">{{ feat.feat_title }}</h2>
+                     <h2 style="color: #2d2d2d;">{{ feature.feat_title }}</h2>
                      <ul class="blog-info-link mt-3 mb-4">
-                        <li><i class="fa fa-user"></i>Sell by {{ feat.seller_name }}</li>
+                        <li><i class="fa fa-user"></i>Sell by {{ feature.seller_name }}</li>
                         <li><a href="#"><i class="fa fa-comments"></i>Chat</a></li>
                      </ul>
-                     <p>{{ feat.feat_pragraph|slice:400 }}</p>
-                      <h2>Price: {{ feat.feat_fee }}</h2>
-                      <h3>Duration: {{ feat.feat_duration }}</h3>
+                     <p>{{ feature.feat_pragraph|slice:400 }}</p>
+                      <h2>Price: {{ feature.feat_fee }}</h2>
+                      <h3>Duration: {{ feature.feat_duration }}</h3>
                   </div>
                   <div class="mt-5 button">
                       {% if request.user.is_user %}
                       <a href="" class="mr-5">Add to Cart</a>
-                      <a href="/viewPanel/checkout/{{feat.id}}" class="mr-5">CheckOut</a>
+                      <a href="/viewPanel/checkout/{{feature.id}}" class="mr-5">CheckOut</a>
                       {% else %}
                       <h2 class="text-danger">Please Login first for buy this course</h2>
                       {% endif %}
                   </div>
-                {% endfor %}
             </div>
 
          </div>

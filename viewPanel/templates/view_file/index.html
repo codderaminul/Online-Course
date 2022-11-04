@@ -25,9 +25,11 @@
         <!-- ? services-area -->
         <div class="services-area">
             <div class="container">
-
                 <div class="row justify-content-sm-center">
                     {% for guide in guidelines %}
+                        {% if forloop.counter > 3 %}
+                            {{ break }}
+                        {% endif %}
                         <div class="col-lg-4 col-md-6 col-sm-8">
                             <div class="single-services mb-30">
                                 <div class="features-icon">
@@ -40,7 +42,6 @@
                             </div>
                         </div>
                     {% endfor %}
-
                 </div>
             </div>
         </div>
@@ -67,7 +68,7 @@
                                 <div class="properties__caption">
                                     <p>{{ feat.feat_name }}</p>
                                     <h3><a href="/viewPanel/details_course/{{ feat.id}}">{{ feat.feat_title }}</a></h3>
-                                    <p>{{ feat.feat_pragraph|slice:200 }}</p>
+                                    <p>{{ feat.feat_pragraph|slice:60 }}....</p>
                                     <div class="properties__footer d-flex justify-content-between align-items-center">
                                         <div class="restaurant-name">
                                             <div class="rating">

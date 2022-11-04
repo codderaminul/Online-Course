@@ -2,7 +2,6 @@ import mimetypes
 import os
 import uuid
 from wsgiref.util import FileWrapper
-
 from django.contrib import auth, messages
 from django.contrib.auth.models import auth
 from django.contrib.auth import login
@@ -10,8 +9,6 @@ from django.contrib.auth.decorators import login_required
 from django.http import StreamingHttpResponse
 from django.shortcuts import render, redirect
 from django.views.generic import CreateView
-
-
 from userPanel.models import guideline, feature, subjects, community, found, blogs, User
 from viewPanel.forms import customerForm
 # Create your views here.
@@ -56,11 +53,11 @@ def LogOut(request):
 
 
 def homePage(request):
-    guide = guideline.objects.all()
+    guide = guideline.objects.all()[:3]
     featr = feature.objects.all()
     subject = subjects.objects.all()
     commu = community.objects.all()
-    fnd = found.objects.all()
+    fnd = found.objects.all()[:1]
 
 
     context = {
@@ -74,7 +71,7 @@ def homePage(request):
 
 
 def aboutPage(request):
-    guide = guideline.objects.all()
+    guide = guideline.objects.all()[:3]
     featr = feature.objects.all()
     subject = subjects.objects.all()
     commu = community.objects.all()
@@ -91,17 +88,26 @@ def aboutPage(request):
 
 def blogPage(request):
     all_blog = blogs.objects.all()
+    course = feature.objects.all()
+    blog = blogs.objects.all()[:9]
     context = {
-        'blogs':all_blog
+
+        'recent_course': course,
+        'recent_blog': blog,
+        'blogs': all_blog
     }
+
     return render(request,'view_file/blog.html',context)
 
 
 def blogDetailsPage(request,id):
-
     blog = blogs.objects.get(id=id)
+    course = feature.objects.all()
+    blog = blogs.objects.all()[:9]
     context = {
-        'blog': blog
+        'blog': blog,
+        'recent_course': course,
+        'recent_blog': blog,
     }
     return render(request,'view_file/blog_details.html',context)
 
@@ -110,7 +116,7 @@ def contactPage(request):
     return render(request,'view_file/contact.html')
 
 def coursePage(request):
-    guide = guideline.objects.all()
+    guide = guideline.objects.all()[:3]
     featr = feature.objects.all()
     subject = subjects.objects.all()
 
@@ -149,29 +155,12 @@ def checkoutPage(request,id):
     return render(request, 'view_file/checkout.html',context)
 
 def profilePage(request):
-    my_course = ByCourse.objects.get(customer_id = request.user.id)
-    list = []
-    therury_list = []
-    subject_list = []
+    my_course = ByCourse.objects.filter(customer_id = request.user.id)
+    course_list = []
     for course in my_course:
-        list.append(course.course_id)
-    for course in list:
-        therury = feature.objects.get(id=course)
-        subject = subjects.objects.all()
-        therury_list.append(therury)
-    return render(request,'view_file/profile.html',{"my_course":therury_list})
-
-def File_download(request, id):
-    base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    file = feature.objects.get(id=id)
-    file_name = file.feat_image.name
-    filepath = base_dir + "/FILES/" + file_name
-    filename = os.path.basename(filepath)
-    chunk_size = 8192
-    response = StreamingHttpResponse(FileWrapper(open(filename,'rb'),chunk_size),content_type=mimetypes.guess_type(filename)[0])
-    response['Content-Length'] = os.path.getsize(filename)
-    response['Content-Disposition'] = "Attachment;filename=%s" %filename
-    return response
+        course_list.append(int(course.course_id))
+    all_course = feature.objects.filter(id__in = course_list)
+    return render(request,'view_file/profile.html',{"my_course":all_course})
 
 def Chat(request,id):
     return render(request,'view_file/chat.html')

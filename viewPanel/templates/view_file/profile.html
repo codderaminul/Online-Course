@@ -63,16 +63,14 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {% for courses in my_course %}
+                    {% for course in my_course %}
                         <tr class="row">
                             <td class="col-1">{{ forloop.counter }}</td>
-                            {% for course in courses %}
-                                <td class="col-3"><img src="{{ course.feat_cover}}" width="200" height="100" alt=""></td>
-                                <td class="col-2"><p>{{ course.seller_name }}</p></td>
-                                <td class="col-3"><p>{{ course.feat_title }}</p></td>
-                                <td class="col-1 "><a class="text-info" href="{{ course.feat_image}}" target="_blank">Open</a></td>
-                                <td class="col-1 "><a class="text-info" href="{{course.feat_image.url}}" download>Download</a></td>
-                            {% endfor %}
+                            <td class="col-3"><img src="{{ course.feat_cover}}" width="200" height="100" alt=""></td>
+                            <td class="col-2"><p>{{ course.seller_name }}</p></td>
+                            <td class="col-3"><p>{{ course.feat_title }}</p></td>
+                            <td class="col-1 "><a class="text-info" href="{{ course.feat_image}}" target="_blank">Open</a></td>
+                            <td class="col-1 "><a class="text-info" href="{{course.feat_image.url}}" download>Download</a></td>
                         </tr>
                     {% endfor %}
                 </tbody>

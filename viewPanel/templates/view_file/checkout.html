@@ -64,16 +64,13 @@
                                 <th class="col">Quantity</th>
                                 <th class="col">Subtotal</th>
                             </tr>
-                            {% for report in delivary %}
                             <tr class="row">
-                                <td class="col-2"><img src="{{ report.feat_cover}}" alt="" style="height:50px;width:50px;"/></td>
-                                <td class="col-5">{{ report.feat_title|slice:20}}</td>
+                                <td class="col-2"><img src="{{ delivary.feat_cover}}" alt="" style="height:50px;width:50px;"/></td>
+                                <td class="col-5">{{ delivary.feat_title|slice:20}}</td>
                                 <td class="col-2">1</td>
-                                <td class="col-3">{{ report.feat_fee }} Taka</td>
+                                <td class="col-3">{{ delivary.feat_fee }} Taka</td>
                             </tr>
-                            {% endfor %}
-
-                        </table>
+                                                    </table>
                         <input type="submit" class="p-3 mt-5 w-100" value="Checkout"/>
                     </div>
                 </div>

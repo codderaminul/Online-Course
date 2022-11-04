@@ -344,7 +344,7 @@ def updateFeature(request,id):
             pass
         try:
             if request.FILES['feat_cover']:
-                deltPath = "userPanel" + item.feat_image.name
+                deltPath = "userPanel" + item.feat_cover.name
                 fs.delete(deltPath)
                 path2 = file_save(request.FILES['feat_cover'], extention(request.FILES['feat_cover']))
                 item.feat_cover = path2

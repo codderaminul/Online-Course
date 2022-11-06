@@ -62,7 +62,7 @@
                     {% for feat in features %}
                         <div class="properties pb-20">
                             <div class="properties__card">
-                                <div class="properties__img overlay1">
+                                <div class="properties__img overlay1 feature_img_size">
                                     <a href="/viewPanel/details_course/{{ feat.id}}"><img src="{{ feat.feat_cover}}" alt=""></a>
                                 </div>
                                 <div class="properties__caption">
@@ -185,7 +185,7 @@
                 <div class="row justify-content-center">
                     <div class="col-xl-12">
                         <div class="section-tittle text-center mt-20">
-                            <a href="{{ '' }}" class="border-btn">View More Subjects</a>
+                            <a href="/about/" class="border-btn">View More Subjects</a>
                         </div>
                     </div>
                 </div>
@@ -251,8 +251,8 @@
                 <div class="team-active">
                     {% for com in community %}
                         <div class="single-cat text-center">
-                            <div class="cat-icon">
-                                <img src="{{ com.com_image }}" alt="">
+                            <div class="cat-icon commu_img_size">
+                                <img src="{{ com.com_image }}" alt="" style="border-radius:50%;">
                             </div>
                             <div class="cat-cap">
                                 <h5><a href="services.html">{{ com.com_name }}</a></h5>

@@ -17,6 +17,21 @@
     background:black;
     margin-top:230px;
 }
+
+.feature_img_size img{
+    height:200px;
+    width:360px;
+}
+
+.commu_img_size img{
+    height:150px;
+    width:150px;
+    border-radius:50%;
+}
+.subj_img_size img{
+    height:120px;
+    width:180px;
+}
 .button{
     margin-top:50px;
 }

@@ -103,11 +103,11 @@ def blogPage(request):
 def blogDetailsPage(request,id):
     blog = blogs.objects.get(id=id)
     course = feature.objects.all()
-    blog = blogs.objects.all()[:9]
+    some_blog = blogs.objects.all()[:9]
     context = {
         'blog': blog,
         'recent_course': course,
-        'recent_blog': blog,
+        'recent_blog': some_blog,
     }
     return render(request,'view_file/blog_details.html',context)
 
@@ -140,8 +140,15 @@ def course_detailsPage(request,id):
 
 def checkoutPage(request,id):
     if request.method == 'POST':
-       check = ByCourse.objects.filter(course_id=id)
-       if not check:
+       my_course = ByCourse.objects.filter(customer_id=request.user.id)
+       course_list = []
+       for course in my_course:
+            course_list.append(int(course.course_id))
+       check = False
+       for course in course_list:
+           if course == id:
+              check = True
+       if check is False:
            saveCourse =  ByCourse(customer_id=request.user.id,course_id=id)
            saveCourse.save()
            messages.success(request,"Add Successfully")
